@@ -1,7 +1,15 @@
 .top-bar {
     margin: auto;
+    background-color: pink;
+    padding: 12px;
+    justify-content: center;
+    display: flex;
 }
 .items {
-    margin: auto;
-    align-content: center;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    gap: 50px;
 }

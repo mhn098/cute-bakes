@@ -10,7 +10,7 @@ export const routes: Routes = [
   MainPageComponent.Route,
   DessertComponent.Route,
 {
-  path: 'main-page',
+  path: '',
   title: 'Main Page',
   loadComponent: () =>
     import('./main-page/main-page.component').then(
