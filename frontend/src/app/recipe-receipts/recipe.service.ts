@@ -30,4 +30,5 @@ export class RecipeService {
   
     deleteRecipe(id: number): Observable<Recipe> {
       return this.http.delete<Recipe>(`${this.apiUrl}/${id}`);
+    }
 }
