@@ -4,19 +4,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editor',
   standalone: true,
-  imports: [ MatCardModule,
+  imports: [ 
+    MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule
+  ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
 export class EditorComponent {
   public static Route = {
-    path: ':slug/editor',
+    path: 'dessert/:slug/editor',
     title: 'Recipe Editor',
     component: EditorComponent,
     canActivate: []
@@ -52,5 +55,9 @@ export class EditorComponent {
       .name!.toLowerCase()
       .replace(/[^a-zA-Z0-9]/g, '-');
     return generatedSlug;
+  }
+
+  onSubmit(): void {
+    console.log('onSubmit()');
   }
 }

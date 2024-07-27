@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -14,6 +15,11 @@ export class MainPageComponent {
     component: MainPageComponent,
     canActivate: []
   };
-constructor(
-) {}
+  constructor(
+    public router: Router
+  ) {}
+
+  publishNews() {
+    this.router.navigate(['/recipe/new/editor']);
+  }
 }

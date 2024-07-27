@@ -9,26 +9,30 @@ import { HttpClient } from '@angular/common/http';
 
 export class RecipeService {
     private apiUrl = 'http://localhost:8000/api/recipes';
+    recipeList: Recipe[] = [];
+    recipeList$: Observable<Recipe[]> = this.get_all_recipes_api();
+    // newsList$: Observable<News[]> = this.get_all_published_api();
+    // adminList$: Observable<News[]> = this.get_all_news_api();
 
     constructor(private http: HttpClient) {}
   
-    getRecipes(): Observable<Recipe[]> {
+    get_all_recipes_api(): Observable<Recipe[]> {
       return this.http.get<Recipe[]>(this.apiUrl);
     }
   
-    getRecipe(id: number): Observable<Recipe> {
+    get_recipe_api(id: number): Observable<Recipe> {
       return this.http.get<Recipe>(`${this.apiUrl}/${id}`);
     }
   
-    createRecipe(recipe: Recipe): Observable<Recipe> {
+    create_recipe_api(recipe: Recipe): Observable<Recipe> {
       return this.http.post<Recipe>(this.apiUrl, recipe);
     }
   
-    updateRecipe(id: number, recipe: Recipe): Observable<Recipe> {
+    update_recipe_api(id: number, recipe: Recipe): Observable<Recipe> {
       return this.http.put<Recipe>(`${this.apiUrl}/${id}`, recipe);
     }
   
-    deleteRecipe(id: number): Observable<Recipe> {
+    delete_recipe_api(id: number): Observable<Recipe> {
       return this.http.delete<Recipe>(`${this.apiUrl}/${id}`);
     }
 }

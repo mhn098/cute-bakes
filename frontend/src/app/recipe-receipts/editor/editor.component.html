@@ -1,21 +1,55 @@
 <p>editor works!</p>
 
-<!-- <form [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <mat-card>
       <mat-card-header>
-        <mat-card-title> Edit Announcement </mat-card-title>
+        <mat-card-title *ngIf="this.news_slug === 'new'; else update">
+        Create Recipe
+        </mat-card-title>
+        <ng-template #update>
+          <mat-card-title> Edit Recipe </mat-card-title>
+        </ng-template>
       </mat-card-header>
       <mat-card-content>
-        <mat-form-field class="announcement-input" appearance="outline" color="accent">
-          <mat-label>Announcement</mat-label>
+        <mat-form-field class="title" appearance="outline" color="accent">
+          <mat-label>Recipe Title</mat-label>
+          <input
+          matInput
+          placeholder=""
+          (change)="generateSlug()"
+          formControlName="title"
+          name="title"
+          required />
+        </mat-form-field>
+        <mat-form-field class="description" appearance="outline" color="accent">
+          <mat-label>Description</mat-label>
           <textarea
             matInput
             placeholder=""
-            formControlName="announcement"
-            name="announcement"
-            required
-            >
+            formControlName="description"
+            name="description"
+            required>
+          </textarea>
+        </mat-form-field>
+        <br>
+        <!-- Main Story -->
+        <mat-form-field class="directions" appearance="outline" color="accent">
+          <mat-label>Directions</mat-label>
+            <textarea matInput
+              placeholder=""
+              formControlName="directions"
+              name="directions"
+              required >
             </textarea>
+        </mat-form-field>
+        <!-- Organization Name Field -->
+        <mat-form-field class="notes" appearance="outline" color="accent">
+          <mat-label>Notes</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="notes"
+            name="notes" />
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions class="buttons">
@@ -31,4 +65,4 @@
         </button>
       </mat-card-actions>
     </mat-card>
-</form> -->
+</form>
